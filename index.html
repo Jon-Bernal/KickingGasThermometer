@@ -15,12 +15,12 @@
       position: relative;
       box-sizing: border-box;
       height: fit-content;
-      width: fit-content;
+      width: 500px;
       margin: 0;
       padding: 0;
     }
 
-    #container::after {
+    #green {
       box-sizing: border-box;
       background-image: url('./plant-green.jpg');
       background-size: cover;
@@ -34,7 +34,8 @@
       19% is 0 
       63.4% is 100
       */
-      content: "";
+      /* content: ""; */
+      filter: saturate(2);
       margin: 0;
       padding: 0;
       background-position: bottom;
@@ -46,8 +47,8 @@
     #gray {
       position: relative;
       box-sizing: border-box;
-      height: 900px;
-      width: auto;
+      height: auto;
+      width: 100%;
       margin: 0;
       padding: 0;
       display: block;
@@ -56,22 +57,28 @@
     }
   </style>
 
-  <script>
-    function updateHeight(percent) {
-      const overlay = document.querySelector('#container:after');
-      overlay.style.height = `${19 + (percent * 63.4)}%`
-    }
-
-    updateHeight(40);
-  </script>
-
 </head>
 
 <body>
   <div id="container">
-    <img src="./plant-gray.png" alt="" id="gray" />
+    <img src="./plant-gray.jpg" alt="" id="gray" />
+    <div id="green">
+      <p></p>
+    </div>
   </div>
 
+  <script>
+    function updateHeight(income) {
+      const percent = (income / 50000);
+      console.log('percent :>> ', percent);
+      const overlay = document.querySelector('#green');
+      console.log('overlay :>> ', overlay);
+      overlay.style.height = `${19 + (percent * (63.4 - 19))}%`
+      console.log('(percent * 63.4) :>> ', (percent * (63.4 - 19)));
+    }
+
+    updateHeight(50000);
+  </script>
 </body>
 
 </html>
