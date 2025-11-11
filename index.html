@@ -6,6 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <!-- Working off of 
+   https://forthepeopleearth.lightning.force.com/lightning/r/Report/00ORg000007DUkDMAW/view?queryScope=userFolders 
+   
+   -->
+
+  <!-- Paste in header -->
   <style>
     * {
       box-sizing: border-box;
@@ -22,7 +28,7 @@
 
     #green {
       box-sizing: border-box;
-      background-image: url('./plant-green.jpg');
+      background-image: url('https://images.squarespace-cdn.com/content/v1/635023a3f9478442b304877b/11dd6a43-14e7-4749-96e0-a46927be92ee/plant-green.jpg');
       background-size: cover;
       position: absolute;
       z-index: 1;
@@ -35,7 +41,6 @@
       63.4% is 100
       */
       /* content: ""; */
-      filter: saturate(2);
       margin: 0;
       padding: 0;
       background-position: bottom;
@@ -56,12 +61,15 @@
       /* border: 1px solid red; */
     }
   </style>
-
+  <!-- End paste in header -->
 </head>
 
 <body>
+  <!-- paste in body -->
   <div id="container">
-    <img src="./plant-gray.jpg" alt="" id="gray" />
+    <img
+      src="https://images.squarespace-cdn.com/content/v1/635023a3f9478442b304877b/db211305-a95f-4d80-962e-3bfb7f124f0b/plant-gray.jpg"
+      alt="" id="gray" />
     <div id="green">
       <p></p>
     </div>
@@ -70,15 +78,20 @@
   <script>
     function updateHeight(income) {
       const percent = (income / 50000);
-      console.log('percent :>> ', percent);
       const overlay = document.querySelector('#green');
-      console.log('overlay :>> ', overlay);
-      overlay.style.height = `${19 + (percent * (63.4 - 19))}%`
-      console.log('(percent * 63.4) :>> ', (percent * (63.4 - 19)));
+      const height = 19 + (percent * (63.4 - 19))
+
+      if (height > 100) {
+        overlay.style.height = `100%`;
+        return;
+      }
+
+      overlay.style.height = `${height}%`;
     }
 
-    updateHeight(50000);
+    updateHeight(5000);
   </script>
+  <!-- end paste in body -->
 </body>
 
 </html>
